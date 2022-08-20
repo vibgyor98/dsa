@@ -6,10 +6,25 @@ using namespace std;
 #define mod     1000000007
 #define inf     1e18
 
-void print(int n, string name) {
+//print N to 1
+void printN_to_1(int num, int n) {
+	if (num < 1) return;
+	cout << num << "\n";
+	printN_to_1(num - 1, n);
+}
+
+//print 1 to N
+void print1_to_N(int num, int n) {
+	if (num > n) return;
+	cout << num << "\n";
+	print1_to_N(num + 1, n);
+}
+
+//print name N times
+void printName(int n, string name) {
 	if (n == 0) return;
 	cout << name << "\n";
-	print(n - 1, name);
+	printName(n - 1, name);
 }
 
 int main() {
@@ -21,11 +36,29 @@ int main() {
 	freopen("output.txt", "w", stdout);
 #endif
 	// Start code here....
+
+	//print name N times
 	int n;
 	cin >> n;
 	string name;
 	cin >> name;
-	print(n, name);
+	printName(n, name);
+
+	//line break for next output
+	cout << "\n";
+
+	//print 1 to N
+	int m;
+	cin >> m;
+	print1_to_N(1, m);
+
+	//line break for next output
+	cout << "\n";
+
+	//print N to 1
+	int p;
+	cin >> p;
+	printN_to_1(10, p);
 
 
 #ifndef ONLINE_JUDGE
